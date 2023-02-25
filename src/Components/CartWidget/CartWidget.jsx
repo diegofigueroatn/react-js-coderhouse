@@ -1,0 +1,9 @@
+import { MdOutlineShoppingCart } from "react-icons/md";
+
+export const CartWidget = () => {
+  return (
+    <a href="/#" className="p-3 text-2xl">
+      <MdOutlineShoppingCart />
+    </a>
+  );
+};
