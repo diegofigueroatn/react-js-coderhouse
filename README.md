@@ -1,3 +1,7 @@
+# PreEntrega2DiegoFigueroa - GIF
+
+![alt text](https://s3.amazonaws.com/appforest_uf/f1678564185388x625492006960696200/Animation.gif "PreEntrega2DiegoFigueroa - GIF")
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
