@@ -38,6 +38,10 @@ export const ItemListContainer = () => {
     });
   }, [categoryName]);
 
+  if (items.length === 0) {
+    return <h1 className="text-4xl font-semibold">Loading products...</h1>;
+  }
+
   return (
     <div className="max-w-screen-lg">
       <ItemList items={items} />
