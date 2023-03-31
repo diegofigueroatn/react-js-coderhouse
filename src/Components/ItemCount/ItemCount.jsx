@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const ItemCount = ({ stock = 20, initial = 1, onAdd }) => {
+export const ItemCount = ({ stock, initial = 1, onAdd }) => {
   const [counter, setCounter] = useState(initial);
 
   const add = () => {
