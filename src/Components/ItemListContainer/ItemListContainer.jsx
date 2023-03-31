@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import { ItemList } from "../ItemList/ItemList";
+
+import { db } from "../../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const { categoryName } = useParams();
@@ -8,13 +12,30 @@ export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    let fetchUrl = "https://fakestoreapi.com/products";
-    fetch(categoryName ? `${fetchUrl}/category/${categoryName}` : fetchUrl)
-      .then((res) => res.json())
-      .then((res) => setItems(res))
-      .catch((error) => {
-        console.log(error);
+    const itemsCollection = collection(db, "products");
+
+    let customQuery = undefined;
+
+    if (categoryName) {
+      const auxQuery = query(
+        itemsCollection,
+        where("category", "==", categoryName)
+      );
+      customQuery = getDocs(auxQuery);
+    } else {
+      customQuery = getDocs(itemsCollection);
+    }
+
+    customQuery.then((res) => {
+      let products = res.docs.map((product) => {
+        return {
+          ...product.data(),
+          id: product.id,
+        };
       });
+
+      setItems(products);
+    });
   }, [categoryName]);
 
   return (
