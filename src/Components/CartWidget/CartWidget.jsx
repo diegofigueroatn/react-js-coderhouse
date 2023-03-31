@@ -10,7 +10,7 @@ export const CartWidget = () => {
 
   return (
     <Link to="cart">
-      <section href="/#" className="flex relative p-4 text-3xl">
+      <section className="flex relative p-4 text-3xl">
         <MdOutlineShoppingCart />
         <article className="absolute flex items-center justify-center rounded-full top-2 right-2 text-sm bg-golden-800 text-neutral-900 w-5 h-5">
           <span>{total}</span>

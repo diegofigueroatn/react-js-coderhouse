@@ -5,7 +5,6 @@ export const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // FUNCION PARA AGREGAR AL CARRITO
   const addToCart = (product) => {
     let existe = isInCart(product.id);
 
@@ -27,25 +26,19 @@ export const CartContextProvider = ({ children }) => {
     }
   };
 
-  // FUNCION PARA SABER SI UN PRODUCTO YA ESTA EN EL CARRITO
   const isInCart = (id) => {
     return cart.some((element) => element.id === id);
   };
 
-  // FUNCION PARA LIMPIAR EL ACARRITO
   const clearCart = () => {
     setCart([]);
   };
-
-  // OBTENER EL TOTAL DE LAS CANTIDADES DE LOS ELEMENTOS DEL CARRITO
 
   const getTotalQuantity = () => {
     return cart.reduce((acc, element) => {
       return acc + element.quantity;
     }, 0);
   };
-
-  // OBTENER EL PRECIO TOTAL DEL CARRITO
 
   const getTotalPrice = () => {
     let totalPrice = cart.reduce((acc, element) => {
@@ -54,8 +47,6 @@ export const CartContextProvider = ({ children }) => {
 
     return totalPrice;
   };
-
-  // ELIMINAR UN PRODUCTO DEL CARRITO
 
   const deleteProductById = (id) => {
     const newCart = cart.filter((element) => element.id !== id); // []
